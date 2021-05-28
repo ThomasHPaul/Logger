@@ -1,17 +1,26 @@
 from datetime import datetime
+import os
 
 class Logger():
     
     # Constants used to pass in event types
-    ERROR = "Error"
-    DATA_SCRAPE = "Data Scrape"
-    DATA_PERSIST = "Data Inserted Into DB"
+    ERROR = "ERROR"
+    DATA_SCRAPE = "DATA_SCRAPE"
+    DATA_PERSIST = "DATA_PERSIST"
+    LOGFILESTART = "LOGFILESTART"
+    
 
     def __init__(self, app_name, logfile_dst=None):
         if logfile_dst is None:
-            logfile = app_name + "_log.txt"
+            self.logfile = app_name + "_log.txt"
         else:
-            logfile = logfile_dst + app_name + "_log.txt"
+            self.logfile = logfile_dst + app_name + "_log.txt"
+
+        if(os.path.isfile(self.logfile)):
+            pass
+        else:
+            self.log(self.LOGFILESTART, "Logfile created")
+
 
 
     def log(self, event_type, message):
