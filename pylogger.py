@@ -8,6 +8,7 @@ class Logger():
     DATA_SCRAPE = "DATA_SCRAPE"
     DATA_PERSIST = "DATA_PERSIST"
     LOGFILESTART = "LOGFILESTART"
+    TEST = "TEST"
     
 
     def __init__(self, app_name, logfile_dst=None):
@@ -26,4 +27,4 @@ class Logger():
     def log(self, event_type, message):
         log_string = str(datetime.now()) + "\t" + event_type + "\t" + message
         with open(self.logfile, 'a+') as f:
-            f.write(log_string)
+            f.write("\n" + log_string)
