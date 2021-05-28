@@ -152,3 +152,6 @@ fabric.properties
 
 # Custom Log file
 *_log.txt
+
+# Database files
+*.db
